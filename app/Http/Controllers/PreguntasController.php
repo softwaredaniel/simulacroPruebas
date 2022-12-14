@@ -83,7 +83,7 @@ class PreguntasController extends Controller
             $programa->id_facultad=$facultadNueva->id;
             $programa->save();
           
-            ;
+            
             $asignatura=new asignaturas;
             $asignatura->descripcion=$request->asignatura;
             $asignatura->id_programas=$facultadNueva->id;
@@ -134,7 +134,8 @@ class PreguntasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $preguntas=preguntas::findOrFail($id);
+        return view('app/actualizarPregunta',compact('preguntas'));
     }
 
     /**
@@ -145,8 +146,33 @@ class PreguntasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        $preguntas=preguntas::findOrFail($id);
+        $facultad=facultades::findOrFail($id);
+        $asignatura=asignaturas::findOrFail($id);
+        $programa=programas::findOrFail($id);
+        $respuestas=respuestas::findOrFail($id);
+
+     
+
+        $facultad->descripcion=$request->input('facultad');
+        $programa->descripcion=$request->input('programa');
+        $asignatura->descripcion=$request->input('asignatura');
+        $preguntas->pregunta=$request->input('pregunta');
+        $preguntas->nivel=$request->input('nivel');
+        $respuestas->respuesta=$request->input('respuesta');
+        $respuestas->correcta=$request->input('correcta');
+        //guardar los registros actualizados
+        $facultad->save();
+        $programa->save();
+        $asignatura->save();
+        $preguntas->save();
+        $respuestas->save();
+     
+       return back()->with("actualizado con exito");
+    
+
+
     }
 
     /**

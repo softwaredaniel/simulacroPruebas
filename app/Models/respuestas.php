@@ -11,7 +11,7 @@ class respuestas extends Model
     
    
     protected $fillable = [
-        'id_respuesta',
+        'id',
         'respuesta',
         'correcta',
         'id_pregunta',
@@ -19,7 +19,7 @@ class respuestas extends Model
         'updated_at',
     ];
     public function relacionPregunta(){
-        return $this->hasMany(preguntas::class,'id_respuesta','id_pregunta');
+        return $this->hasMany(preguntas::class,'id_pregunta');
     }
     public function relacionPrueba(){
         return $this->belongsTo(pruebas::class);

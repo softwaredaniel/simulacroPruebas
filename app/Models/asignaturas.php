@@ -15,7 +15,7 @@ class asignaturas extends Model
 */
 protected $table='asignaturas';
     protected $fillable = [
-        'id_asignatura',
+        'id',
         'descripcion',
         'id_programas',
         'created_at',
@@ -23,6 +23,9 @@ protected $table='asignaturas';
     ];
 
     public function relacionProgAsignaturas(){
-        return $this->belongsTo(programas::class,'id_asignatura','id_programa');
+        return $this->belongsTo(programas::class,'id','id');
+    }
+    public function relacionProPreguntas(){
+        return $this->belongsTo(preguntas::class,'id','id');
     }
 }

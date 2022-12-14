@@ -39,7 +39,8 @@ Route::resource('/auditor', AuditorController::class);
 Route::resource('/usuarios',UsuariosController::class);
 
 //rutas para editar registros
-Route::get('/editar/{id}', 'PreguntasController@editar' )->name('preguntas.editar');
+Route::get('/editar/{id}', [App\Http\Controllers\PreguntasController::class, 'edit'])->name('preguntas.edit');
+Route::put('/actualizar/{id}', [App\Http\Controllers\PreguntasController::class, 'update'])->name('actualizar.update');
 //ruta para eliminar usuarios
 Route::delete('app/usuarios/{id}',[App\Http\Controllers\UsuariosController::class, 'destroy'])->name('delete');
 Route::delete('app/preguntas/{id}',[App\Http\Controllers\PreguntasController::class, 'destroy'])->name('preguntas.delete');

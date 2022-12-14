@@ -54,10 +54,10 @@
                             @foreach($preguntas as $datos)
                                 <tr>
                                    
-                                     <td>{{$datos->asignatura->relacionProgAsignaturas->descripcion}}</td>
+                                     <td>{{$datos->asignatura->relacionProgAsignaturas->relacionPro->descripcion}}</td>
                                    
                                   
-                                    <td>{{$datos->asignatura->relacionProgAsignaturas->relacionPro->descripcion}}</td>
+                                    <td>{{$datos->asignatura->relacionProgAsignaturas->descripcion}}</td>
                                  
                                     <td>{{$datos->asignatura->descripcion}}</td>
                                     <td>{{$datos->pregunta}}</td>
@@ -70,7 +70,7 @@
                                              <p>Nivel 3</p>
                                           @elseif($datos->nivel == 4)
                                              <p>Nivel 4</p>
-                                          @elseif($datos->nivel == 4)
+                                          @elseif($datos->nivel == 5)
                                              <p>Nivel 5</p>
                                          @else 
                                              <p>Esta pregunta no tiene nivel asignado</p>
@@ -79,7 +79,7 @@
                                      </td>
                                      <td><li>{{$datos->relacion->respuesta }}</li></td>
                                      <td>@if($datos->relacion->correcta==1)<p>si</p>@else <p>No</p>@endif</td>
-                                    <td><button class="btn btn-warning"><a href="{{route('preguntas.editar', $datos->id)}}"><i class="fas fa-pencil-alt"></a></i></button>
+                                    <td><button class="btn btn-warning"><a href="{{route('preguntas.edit', $datos->id)}}"><i class="fas fa-pencil-alt"></a></i></button>
                                              <form action="{{ route('preguntas.delete', $datos->id) }}" class="d-inline" method="POST">
                                                 @method('DELETE')
                                                 @csrf

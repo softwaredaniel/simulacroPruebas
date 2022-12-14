@@ -14,7 +14,7 @@ class programas extends Model
 * */
 protected $table='programas';
     protected $fillable = [
-        'id_programa',
+        'id',
         'descripcion',
         'id_facultad',
         'created_at',
