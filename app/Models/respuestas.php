@@ -9,7 +9,7 @@ class respuestas extends Model
 {
     use HasFactory;
     
-   
+    protected $table='respuestas';
     protected $fillable = [
         'id',
         'respuesta',
@@ -19,7 +19,7 @@ class respuestas extends Model
         'updated_at',
     ];
     public function relacionPregunta(){
-        return $this->belongsTo(preguntas::class);
+        return $this->belongsTo(preguntas::class,'id','id_pregunta');
     }
     public function relacionPrueba(){
         return $this->belongsTo(pruebas::class);

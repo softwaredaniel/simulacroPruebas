@@ -77,8 +77,8 @@
                                         @endif
                                        
                                      </td>
-                                     <td><li>{{$datos->relacion->relacionPregunta->respuesta }}</li></td>
-                                     <td>@if($datos->relacion->relacionPregunta->correcta==1)<p>si</p>@else <p>No</p>@endif</td>
+                                     <td><li>{{$datos->relacion->respuesta}}</li></td>
+                                     <td>@if($datos->relacion->correcta==1)<p>si</p>@else <p>No</p>@endif</td>
                                     <td><button class="btn btn-warning"><a href="{{route('preguntas.edit', $datos->id)}}"><i class="fas fa-pencil-alt"></a></i></button>
                                              <form action="{{ route('preguntas.delete', $datos->id) }}" class="d-inline" method="POST">
                                                 @method('DELETE')

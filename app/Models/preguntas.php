@@ -20,7 +20,7 @@ class preguntas extends Model
         'updated_at',
     ];
     public function relacion(){
-        return $this->belongsTo(respuestas::class,'id_respuesta');
+        return $this->belongsTo(respuestas::class,'id_respuesta','id_pregunta');
     }
     public function asignatura(){
         return $this->belongsTo(asignaturas::class,'id_asignatura');

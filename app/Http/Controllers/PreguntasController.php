@@ -27,7 +27,7 @@ class PreguntasController extends Controller
     public function index()
     {
         $preguntas=preguntas::get();
-       
+    
         
         return view('app/preguntas',compact('preguntas'));
     }
