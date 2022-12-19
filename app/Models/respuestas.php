@@ -19,7 +19,7 @@ class respuestas extends Model
         'updated_at',
     ];
     public function relacionPregunta(){
-        return $this->hasMany(preguntas::class,'id_pregunta');
+        return $this->belongsTo(preguntas::class);
     }
     public function relacionPrueba(){
         return $this->belongsTo(pruebas::class);
